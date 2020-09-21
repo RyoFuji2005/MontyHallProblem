@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
- <meta charset="utf-8"/>
- <style type="text/css">
-  p, input {
-   font-size: 200%
-  }
-  h1 {
-   color: blue;
-   font-size: 300%
-  }
- </style>
+  <meta charset="utf-8">
+  <title>Monty Hall Problem</title> 
+  <style type="text/css">
+    p, input {
+      font-size: 200%
+    }
+    h1 {
+      color: blue;
+      font-size: 300%
+    }
+  </style>
 </head>
 <body>
- <h1>Monty Hall Problem</b></h1>
- <p id="tests"></p>
- <p id="res1"></p>
- <p id="res2"></p>
- <p id="res3"></p>
- <input type="number" id="num" value="1000000">
- <input type="button" value="実行" onclick="clicked()">
- <script type="text/javascript">
-  function clicked() {
-   let point = 0
-   let tests = document.getElementById("num").value
-   document.getElementById("tests").innerText = "実行回数：" + tests
-   for (let i = 0; i < tests; i++) {
-    if (Math.floor(Math.random() * 3) != Math.floor(Math.random() * 3)) {
-     point++
+  <h1>Monty Hall Problem</b></h1>
+  <p id="tests"></p>
+  <p id="res1"></p>
+  <p id="res2"></p>
+  <p id="res3"></p>
+  <input type="number" id="num" value="1000000">
+  <input type="button" value="実行" onclick="clicked()">
+  <script type="text/javascript">
+    function clicked() {
+      let point = 0
+      let tests = document.getElementById("num").value
+      document.getElementById("tests").innerText = "実行回数：" + tests
+      for (let i = 0; i < tests; i++) {
+        if (Math.floor(Math.random() * 3) != Math.floor(Math.random() * 3)) {
+          point++
+        }
+      }
+      let res1 = Math.floor(point * 10000 / tests) / 100
+      let res2 = Math.floor((100 - res1) * 100) / 100
+      let prob = Math.floor(res1 * 100 / res2) / 100
+      document.getElementById("res1").innerText = "変更するときの当選確率　：" + res1.toFixed(2) + "%"
+      document.getElementById("res2").innerText = "変更しないときの当選確率：" + res2.toFixed(2) + "%"
+      document.getElementById("res3").innerText = "よって変更するときはしないときの" + prob.toFixed(2) + "倍の確率で当選する。"
     }
-   }
-   let res1 = Math.floor(point * 10000 / tests) / 100
-   let res2 = Math.floor((100 - res1) * 100) / 100
-   let prob = Math.floor(res1 * 100 / res2) / 100
-   document.getElementById("res1").innerText = "変更するときの当選確率　：" + res1.toFixed(2) + "%"
-   document.getElementById("res2").innerText = "変更しないときの当選確率：" + res2.toFixed(2) + "%"
-   document.getElementById("res3").innerText = "よって変更するときはしないときの" + prob.toFixed(2) + "倍の確率で当選する。"
-  }
- </script>
- <p><a href="https://ja.wikipedia.org/wiki/モンティ・ホール問題">モンティ・ホール問題 - Wikipedia</a></p>
+  </script>
+  <p><a href="https://ja.wikipedia.org/wiki/モンティ・ホール問題">モンティ・ホール問題 - Wikipedia</a></p>
 </body>
 </head>
